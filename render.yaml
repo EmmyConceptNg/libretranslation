@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: libretranslate
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    buildCommand: docker build -t libretranslate .
+    startCommand: docker run -p 5000:5000 libretranslate
+    envVars:
+      - key: LT_HOST
+        value: 0.0.0.0
+      - key: LT_PORT
+        value: 5000
